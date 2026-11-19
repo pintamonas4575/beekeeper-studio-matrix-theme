@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Matrix — tema para Beekeeper Studio (probado con 6.3.x)
-   Negro puro, verde lima fosforito, rejilla de terminal y brillo CRT.
+   Matrix — theme for Beekeeper Studio (tested with 6.3.x)
+   Pure black, phosphor lime green, terminal grid and CRT glow.
    ========================================================================== */
 
 /* -------------------------------------------------------------------------
-   Paleta oscura (la principal)
+   Dark palette (the main one)
    ------------------------------------------------------------------------- */
 .dark-theme {
   --background: #000000;
@@ -22,7 +22,7 @@
   --green-contrast: #000000;
   --primary-contrast: #000000;
 
-  /* colores propios del tema */
+  /* theme-specific colors */
   --mx-bg-deep: #000000;
   --mx-bg: #020702;
   --mx-panel: #031003;
@@ -44,7 +44,7 @@
 }
 
 /* -------------------------------------------------------------------------
-   Paleta clara ("papel de terminal": verde oscuro sobre crema verdoso)
+   Light palette ("terminal paper": dark green on greenish cream)
    ------------------------------------------------------------------------- */
 .light-theme {
   --background: #f4fff0;
@@ -80,7 +80,7 @@
 }
 
 /* -------------------------------------------------------------------------
-   Tokens de componentes (comunes a claro y oscuro)
+   Component tokens (shared by light and dark)
    ------------------------------------------------------------------------- */
 .light-theme,
 .dark-theme {
@@ -89,7 +89,7 @@
   --scrollbar-thumb: rgba(57, 255, 20, 0.35);
   --link-fg: var(--mx-lime);
 
-  /* Barra de título y pestañas */
+  /* Title bar and tabs */
   --titlebar-bg: var(--mx-bg-deep);
   --titlebar-fg: var(--mx-muted);
   --titlebar-inactive-bg: var(--mx-bg-deep);
@@ -100,7 +100,7 @@
   --tab-active-bg: var(--mx-bg);
   --tab-active-fg: var(--mx-lime);
 
-  /* Barra lateral y raíl de iconos */
+  /* Sidebar and icon rail */
   --sidebar-bg: linear-gradient(180deg, var(--mx-panel-2) 0%, var(--mx-panel) 45%, var(--mx-bg-deep) 100%);
   --sidebar-fg: var(--mx-fg);
   --sidebar-rail-bg: linear-gradient(180deg, #072a05 0%, #031503 55%, #000000 100%);
@@ -113,7 +113,7 @@
   --primary-sidebar-gutter-border: var(--mx-line);
   --tree-guide-border-hover: var(--mx-line);
 
-  /* Iconos del árbol */
+  /* Tree icons */
   --icon-table-fg: var(--mx-lime);
   --icon-view-fg: var(--mx-mint);
   --icon-materialized-view-fg: var(--mx-acid);
@@ -136,26 +136,29 @@
   --btn-flat-shadow: inset 0 0 0 1px rgba(57, 255, 20, 0.28);
   --btn-icon-fg: var(--mx-muted);
   --btn-icon-fg-hover: var(--mx-lime);
-  --btn-border-radius: 4px;
+  --btn-border-radius: 8px;
+  --btn-small-border-radius: 6px;
 
   /* Inputs y checkboxes */
   --input-fg: var(--mx-lime);
   --input-border: 1px solid rgba(57, 255, 20, 0.25);
   --input-border-focus: 1px solid var(--mx-lime);
-  --input-border-radius: 3px;
+  --input-border-radius: 8px;
+  --checkbox-border-radius: 5px;
   --focus-ring: 1px solid var(--mx-lime);
   --checkbox-border: var(--mx-muted);
   --checkbox-checked-bg: var(--mx-lime);
   --checkbox-checked-fg: #000000;
 
-  /* Paneles, menús y avisos */
+  /* Panels, menus and notifications */
   --panel-bg: var(--mx-panel);
   --panel-fg: var(--mx-fg);
   --panel-bg-hover: rgba(57, 255, 20, 0.10);
   --panel-border: 1px solid var(--mx-line);
-  --panel-border-radius: 4px;
+  --panel-border-radius: 14px;
   --panel-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(57, 255, 20, 0.22);
-  --menu-border-radius: 4px;
+  --menu-border-radius: 10px;
+  --alert-border-radius: 10px;
   --connection-form-card-bg: var(--mx-panel);
   --notif-bg: #000000;
   --notif-fg: var(--mx-lime);
@@ -163,13 +166,13 @@
   --notif-success-fg: var(--mx-lime);
   --notif-warning-fg: var(--mx-acid);
 
-  /* Pestañas tipo "pill" */
+  /* Pill-style tabs */
   --nav-pill-fg: var(--mx-muted);
   --nav-pill-fg-hover: var(--mx-lime-soft);
   --nav-pill-active-fg: var(--mx-lime);
   --nav-pill-active-shadow: inset 0 -2px var(--mx-lime);
 
-  /* Barra de estado */
+  /* Status bar */
   --statusbar-bg: var(--mx-grad);
   --statusbar-fg: #000000;
   --statusbar-fg-inverse: var(--mx-lime);
@@ -213,7 +216,7 @@
   --editor-searchmatch-bg: rgba(204, 255, 0, 0.25);
   --editor-searchmatch-selected-bg: rgba(204, 255, 0, 0.45);
 
-  /* Sintaxis: todo en la gama verde, con matices para distinguir */
+  /* Syntax: all within the green range, with hue shifts to tell tokens apart */
   --syntax-keyword: var(--mx-lime);
   --syntax-function: var(--mx-acid);
   --syntax-string: var(--mx-mint);
@@ -230,10 +233,10 @@
 }
 
 /* ==========================================================================
-   Extras (CSS directo; el CSS de la app va en @layer, así que esto gana)
+   Extras (plain CSS; the app's CSS lives in @layer, so these rules win)
    ========================================================================== */
 
-/* Rejilla de terminal en barra lateral */
+/* Terminal grid in the sidebar */
 .sidebar {
   background-image:
     linear-gradient(var(--mx-grid) 1px, transparent 1px),
@@ -242,7 +245,7 @@
   background-size: 24px 24px, 24px 24px, 100% 100%;
 }
 
-/* Rejilla en el editor */
+/* Grid in the editor */
 .query-editor,
 .BksTextEditor .cm-editor {
   background-image:
@@ -252,7 +255,7 @@
   background-color: var(--editor-bg);
 }
 
-/* Texto del editor con brillo fosforito (solo oscuro) */
+/* Phosphor glow on editor text (dark only) */
 .dark-theme .BksTextEditor .cm-content {
   text-shadow: 0 0 6px rgba(57, 255, 20, 0.35);
 }
@@ -261,7 +264,7 @@
   font-style: italic;
 }
 
-/* Botón principal (Run All) */
+/* Primary button (Run All) */
 .btn.btn-primary {
   background: var(--btn-primary-bg);
   box-shadow: var(--btn-primary-shadow);
@@ -272,18 +275,18 @@
   background: var(--btn-primary-bg-hover);
 }
 
-/* Raíl de iconos: cuadradito lima con halo */
+/* Icon rail: lime square with a glow */
 .global-items .nav-item.active > span {
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0 0 14px rgba(57, 255, 20, 0.6);
 }
 
-/* Pestaña activa con línea lima arriba */
+/* Active tab with a lime line on top */
 .core-tabs .nav-tabs .nav-link.active {
   box-shadow: inset 0 2px 0 0 var(--mx-lime);
 }
 
-/* Cabeceras de columnas en degradado verde */
+/* Column headers with a green gradient */
 .tabulator .tabulator-header .tabulator-col .tabulator-col-title {
   background-image: var(--mx-grad-text);
   -webkit-background-clip: text;
@@ -293,30 +296,55 @@
   letter-spacing: 0.02em;
 }
 
-/* Celda activa con borde lima brillante */
+/* Active cell with a bright lime border */
 .tabulator .tabulator-tableholder .tabulator-range-overlay .tabulator-range-cell-active {
   border-radius: 2px;
   box-shadow: 0 0 0 1px var(--mx-lime), 0 0 12px rgba(57, 255, 20, 0.6);
 }
 
-/* Avisos: consola negra con filo lima */
+/* Notifications: black console with a lime edge */
 .noty_theme__mint.noty_bar {
   background: var(--notif-bg);
   border: 1px solid rgba(57, 255, 20, 0.3);
   border-left: 4px solid var(--mx-lime);
-  border-radius: 4px;
+  border-radius: var(--alert-border-radius);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85), -6px 0 22px rgba(57, 255, 20, 0.2);
 }
 
-/* Barra de estado: pastillas translúcidas oscuras */
+/* Status bar: dark translucent pills */
 .global-status-bar .btn,
 .global-status-bar .badge {
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
-/* --- Solo modo oscuro: scanlines CRT + resplandor verde ------------------ */
-/* Capa decorativa: no captura clics. Si notas lentitud, borra este bloque. */
+/* --- Smooth rounded corners for popups and their contents -----------------
+   Modals, menus and alerts read the radius tokens above. The rules below cover
+   tooltips, popovers and elements whose radius is hard-coded in Vue scoped
+   styles (higher specificity), hence the !important. */
+.tooltip .tooltip-inner,
+.tooltip.popover .popover-inner,
+.tooltip.commit-mode-tooltip .commit-mode-tooltip-content,
+.bks-tooltip {
+  border-radius: var(--menu-border-radius) !important;
+}
+
+x-popover {
+  border-radius: var(--menu-border-radius);
+}
+
+/* Settings dialog: side nav items, setting rows, theme preview cards */
+.config .config-nav .nav-btn,
+.config .form-group {
+  border-radius: 10px !important;
+}
+
+.theme-item .theme-preview-frame {
+  border-radius: 10px !important;
+}
+
+/* --- Dark mode only: CRT scanlines + green glow ------------------------- */
+/* Decorative layer: it doesn't capture clicks. If things feel slow, delete this block. */
 body.dark-theme::after {
   content: "";
   position: fixed;
