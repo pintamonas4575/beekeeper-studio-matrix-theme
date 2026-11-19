@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Matrix — tema para Beekeeper Studio (probado con 6.3.x)
+   Negro puro, verde lima fosforito, rejilla de terminal y brillo CRT.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Paleta oscura (la principal)
+   ------------------------------------------------------------------------- */
+.dark-theme {
+  --background: #000000;
+  --base-gray: #4f6b52;
+  --base-accent: #39ff14;
+
+  --base-red: #ff4d4d;
+  --base-orange: #d4ff3a;
+  --base-yellow: #e6ff5c;
+  --base-green: #39ff14;
+  --base-blue: #3dffb0;
+  --base-purple: #7dff9a;
+  --base-pink: #b8ff5c;
+
+  --green-contrast: #000000;
+  --primary-contrast: #000000;
+
+  /* colores propios del tema */
+  --mx-bg-deep: #000000;
+  --mx-bg: #020702;
+  --mx-panel: #031003;
+  --mx-panel-2: #062006;
+  --mx-line: rgba(57, 255, 20, 0.16);
+  --mx-fg: #c8ffc0;
+  --mx-muted: #3f8f3a;
+  --mx-dim: #1f5c1c;
+  --mx-lime: #39ff14;
+  --mx-lime-soft: #7dff5c;
+  --mx-acid: #ccff00;
+  --mx-mint: #3dffb0;
+  --mx-white: #eaffe5;
+
+  --mx-grad: linear-gradient(90deg, #021a02 0%, #0a4d06 35%, #1f9e0c 70%, #39ff14 100%);
+  --mx-grad-btn: linear-gradient(90deg, #1fbf0a 0%, #39ff14 60%, #a6ff4d 100%);
+  --mx-grad-text: linear-gradient(90deg, #39ff14 0%, #ccff00 50%, #3dffb0 100%);
+  --mx-grid: rgba(57, 255, 20, 0.05);
+}
+
+/* -------------------------------------------------------------------------
+   Paleta clara ("papel de terminal": verde oscuro sobre crema verdoso)
+   ------------------------------------------------------------------------- */
+.light-theme {
+  --background: #f4fff0;
+  --base-gray: #5f7a5c;
+  --base-accent: #1a8f00;
+
+  --base-red: #c62828;
+  --base-orange: #6b8f00;
+  --base-yellow: #7a8a00;
+  --base-green: #1a8f00;
+  --base-blue: #00806a;
+  --base-purple: #2e7d32;
+  --base-pink: #558b2f;
+
+  --mx-bg-deep: #e8f7e2;
+  --mx-bg: #f4fff0;
+  --mx-panel: #e6f6df;
+  --mx-panel-2: #d6efcc;
+  --mx-line: rgba(26, 143, 0, 0.18);
+  --mx-fg: #0d2b0a;
+  --mx-muted: #5f7a5c;
+  --mx-dim: #9cbf95;
+  --mx-lime: #1a8f00;
+  --mx-lime-soft: #2fa317;
+  --mx-acid: #5a7f00;
+  --mx-mint: #00806a;
+  --mx-white: #0d2b0a;
+
+  --mx-grad: linear-gradient(90deg, #0d4d00 0%, #1a8f00 60%, #3fb01f 100%);
+  --mx-grad-btn: linear-gradient(90deg, #146e00 0%, #1a8f00 60%, #3fb01f 100%);
+  --mx-grad-text: linear-gradient(90deg, #146e00 0%, #5a7f00 50%, #00806a 100%);
+  --mx-grid: rgba(26, 143, 0, 0.05);
+}
+
+/* -------------------------------------------------------------------------
+   Tokens de componentes (comunes a claro y oscuro)
+   ------------------------------------------------------------------------- */
+.light-theme,
+.dark-theme {
+  --selection-bg: rgba(57, 255, 20, 0.28);
+  --selection-fg: var(--mx-white);
+  --scrollbar-thumb: rgba(57, 255, 20, 0.35);
+  --link-fg: var(--mx-lime);
+
+  /* Barra de título y pestañas */
+  --titlebar-bg: var(--mx-bg-deep);
+  --titlebar-fg: var(--mx-muted);
+  --titlebar-inactive-bg: var(--mx-bg-deep);
+  --titlebar-inactive-fg: var(--mx-dim);
+  --tabs-header-bg: var(--mx-bg-deep);
+  --tab-bg: var(--mx-bg-deep);
+  --tab-fg: var(--mx-muted);
+  --tab-active-bg: var(--mx-bg);
+  --tab-active-fg: var(--mx-lime);
+
+  /* Barra lateral y raíl de iconos */
+  --sidebar-bg: linear-gradient(180deg, var(--mx-panel-2) 0%, var(--mx-panel) 45%, var(--mx-bg-deep) 100%);
+  --sidebar-fg: var(--mx-fg);
+  --sidebar-rail-bg: linear-gradient(180deg, #072a05 0%, #031503 55%, #000000 100%);
+  --sidebar-rail-fg: var(--mx-muted);
+  --sidebar-rail-fg-hover: var(--mx-lime);
+  --sidebar-rail-active-bg: var(--mx-lime);
+  --sidebar-rail-active-fg: #000000;
+  --gutter-border: var(--mx-line);
+  --query-editor-gutter-border: var(--mx-line);
+  --primary-sidebar-gutter-border: var(--mx-line);
+  --tree-guide-border-hover: var(--mx-line);
+
+  /* Iconos del árbol */
+  --icon-table-fg: var(--mx-lime);
+  --icon-view-fg: var(--mx-mint);
+  --icon-materialized-view-fg: var(--mx-acid);
+  --icon-schema-fg: var(--mx-muted);
+  --icon-query-fg: var(--mx-acid);
+  --icon-function-fg: var(--mx-mint);
+  --icon-routine-fg: var(--mx-mint);
+
+  /* Botones */
+  --btn-primary-bg: var(--mx-grad-btn);
+  --btn-primary-bg-hover: linear-gradient(90deg, #39ff14, #a6ff4d 60%, #ccff00);
+  --btn-primary-fg: #000000;
+  --btn-primary-shadow: 0 0 0 1px rgba(57, 255, 20, 0.5), 0 0 16px rgba(57, 255, 20, 0.45);
+  --btn-fg: var(--mx-muted);
+  --btn-fg-hover: var(--mx-lime);
+  --btn-flat-fg: var(--mx-lime);
+  --btn-flat-fg-hover: var(--mx-white);
+  --btn-flat-bg: rgba(57, 255, 20, 0.07);
+  --btn-flat-bg-hover: rgba(57, 255, 20, 0.15);
+  --btn-flat-shadow: inset 0 0 0 1px rgba(57, 255, 20, 0.28);
+  --btn-icon-fg: var(--mx-muted);
+  --btn-icon-fg-hover: var(--mx-lime);
+  --btn-border-radius: 4px;
+
+  /* Inputs y checkboxes */
+  --input-fg: var(--mx-lime);
+  --input-border: 1px solid rgba(57, 255, 20, 0.25);
+  --input-border-focus: 1px solid var(--mx-lime);
+  --input-border-radius: 3px;
+  --focus-ring: 1px solid var(--mx-lime);
+  --checkbox-border: var(--mx-muted);
+  --checkbox-checked-bg: var(--mx-lime);
+  --checkbox-checked-fg: #000000;
+
+  /* Paneles, menús y avisos */
+  --panel-bg: var(--mx-panel);
+  --panel-fg: var(--mx-fg);
+  --panel-bg-hover: rgba(57, 255, 20, 0.10);
+  --panel-border: 1px solid var(--mx-line);
+  --panel-border-radius: 4px;
+  --panel-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(57, 255, 20, 0.22);
+  --menu-border-radius: 4px;
+  --connection-form-card-bg: var(--mx-panel);
+  --notif-bg: #000000;
+  --notif-fg: var(--mx-lime);
+  --notif-info-fg: var(--mx-lime);
+  --notif-success-fg: var(--mx-lime);
+  --notif-warning-fg: var(--mx-acid);
+
+  /* Pestañas tipo "pill" */
+  --nav-pill-fg: var(--mx-muted);
+  --nav-pill-fg-hover: var(--mx-lime-soft);
+  --nav-pill-active-fg: var(--mx-lime);
+  --nav-pill-active-shadow: inset 0 -2px var(--mx-lime);
+
+  /* Barra de estado */
+  --statusbar-bg: var(--mx-grad);
+  --statusbar-fg: #000000;
+  --statusbar-fg-inverse: var(--mx-lime);
+
+  /* Badges y teclas */
+  --badge-flat-bg: rgba(57, 255, 20, 0.12);
+  --badge-flat-fg: var(--mx-lime);
+  --badge-primary-bg: var(--mx-lime);
+  --badge-primary-fg: #000000;
+
+  /* Tabla de resultados */
+  --table-fg: var(--mx-fg);
+  --table-header-shadow: inset 0 -1px var(--mx-line);
+  --table-row-header-shadow: 1px 0 var(--mx-line);
+  --table-row-odd-bg: rgba(57, 255, 20, 0.03);
+  --table-cell-readonly-fg: var(--mx-muted);
+  --table-cell-bg-hover: rgba(57, 255, 20, 0.08);
+  --table-cell-selected-bg: rgba(57, 255, 20, 0.14);
+  --table-cell-editing-bg: rgba(57, 255, 20, 0.20);
+  --table-cell-binary-fg: var(--mx-acid);
+  --table-range-border: var(--mx-lime);
+  --table-range-handle-bg: var(--mx-lime);
+  --table-header-selected-bg: var(--mx-lime);
+  --table-header-selected-fg: #000000;
+
+  /* Editor */
+  --editor-bg: var(--mx-bg);
+  --editor-fg: var(--mx-fg);
+  --editor-gutter-bg: var(--mx-bg);
+  --editor-cursor-bg: var(--mx-lime);
+  --editor-fatcursor-bg: var(--mx-lime);
+  --editor-activeline-bg: rgba(57, 255, 20, 0.07);
+  --editor-activeline-gutter-bg: rgba(57, 255, 20, 0.12);
+  --editor-linenumber-fg: var(--mx-dim);
+  --editor-linenumber-active-fg: var(--mx-lime);
+  --editor-selected-bg: rgba(57, 255, 20, 0.25);
+  --editor-matchingselection-bg: rgba(57, 255, 20, 0.14);
+  --editor-matchingbracket-fg: #000000;
+  --editor-matchingbracket-bg: var(--mx-lime);
+  --editor-indent-marker-bg: rgba(57, 255, 20, 0.07);
+  --editor-searchmatch-bg: rgba(204, 255, 0, 0.25);
+  --editor-searchmatch-selected-bg: rgba(204, 255, 0, 0.45);
+
+  /* Sintaxis: todo en la gama verde, con matices para distinguir */
+  --syntax-keyword: var(--mx-lime);
+  --syntax-function: var(--mx-acid);
+  --syntax-string: var(--mx-mint);
+  --syntax-constant: #a6ff4d;
+  --syntax-variable: var(--mx-fg);
+  --syntax-type: var(--mx-lime-soft);
+  --syntax-decorator: var(--mx-acid);
+  --syntax-link: var(--mx-mint);
+  --syntax-comment: var(--mx-muted);
+  --syntax-punctuation: #6fcf63;
+  --editor-operator-fg: var(--mx-lime-soft);
+  --editor-sql-alias-fg: var(--mx-acid);
+  --editor-sql-field-fg: var(--mx-white);
+}
+
+/* ==========================================================================
+   Extras (CSS directo; el CSS de la app va en @layer, así que esto gana)
+   ========================================================================== */
+
+/* Rejilla de terminal en barra lateral */
+.sidebar {
+  background-image:
+    linear-gradient(var(--mx-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mx-grid) 1px, transparent 1px),
+    var(--sidebar-bg, none);
+  background-size: 24px 24px, 24px 24px, 100% 100%;
+}
+
+/* Rejilla en el editor */
+.query-editor,
+.BksTextEditor .cm-editor {
+  background-image:
+    linear-gradient(var(--mx-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mx-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: var(--editor-bg);
+}
+
+/* Texto del editor con brillo fosforito (solo oscuro) */
+.dark-theme .BksTextEditor .cm-content {
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.35);
+}
+
+.cm-comment {
+  font-style: italic;
+}
+
+/* Botón principal (Run All) */
+.btn.btn-primary {
+  background: var(--btn-primary-bg);
+  box-shadow: var(--btn-primary-shadow);
+  border: 0;
+  font-weight: 700;
+}
+.btn.btn-primary:hover {
+  background: var(--btn-primary-bg-hover);
+}
+
+/* Raíl de iconos: cuadradito lima con halo */
+.global-items .nav-item.active > span {
+  border-radius: 6px;
+  box-shadow: 0 0 14px rgba(57, 255, 20, 0.6);
+}
+
+/* Pestaña activa con línea lima arriba */
+.core-tabs .nav-tabs .nav-link.active {
+  box-shadow: inset 0 2px 0 0 var(--mx-lime);
+}
+
+/* Cabeceras de columnas en degradado verde */
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+  background-image: var(--mx-grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Celda activa con borde lima brillante */
+.tabulator .tabulator-tableholder .tabulator-range-overlay .tabulator-range-cell-active {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--mx-lime), 0 0 12px rgba(57, 255, 20, 0.6);
+}
+
+/* Avisos: consola negra con filo lima */
+.noty_theme__mint.noty_bar {
+  background: var(--notif-bg);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  border-left: 4px solid var(--mx-lime);
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85), -6px 0 22px rgba(57, 255, 20, 0.2);
+}
+
+/* Barra de estado: pastillas translúcidas oscuras */
+.global-status-bar .btn,
+.global-status-bar .badge {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}
+
+/* --- Solo modo oscuro: scanlines CRT + resplandor verde ------------------ */
+/* Capa decorativa: no captura clics. Si notas lentitud, borra este bloque. */
+body.dark-theme::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483000;
+  mix-blend-mode: screen;
+  background:
+    repeating-linear-gradient(0deg, rgba(57, 255, 20, 0.025) 0px, rgba(57, 255, 20, 0.025) 1px, transparent 1px, transparent 3px),
+    radial-gradient(ellipse 55% 45% at 88% 92%, rgba(57, 255, 20, 0.10), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 10% 8%, rgba(57, 255, 20, 0.06), transparent 70%);
+}
